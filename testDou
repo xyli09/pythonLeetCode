@@ -1,0 +1,53 @@
+# -*- coding:utf-8 -*-
+
+# class Solution:
+#     # s 源字符串
+#     def replaceSpace( s):
+#         l = list(s)
+#         res =[]
+#         for i in (l):
+#             if i == ' ':
+#                 i = '%20'
+#             res.append(i)
+#         res= ''.join(res)
+#         return res
+#         # write code here
+# s1 = Solution
+# input = "We Are Happy."
+# print(s1.replaceSpace(input))
+
+
+# -*- coding:utf-8 -*-
+
+
+# class Solution2:
+#     def __init__(self):
+#         self.s1 = []
+#     def push(self, node):
+#         # write code here
+#         self.s1.append(node)
+#     def pop(self):
+#         # return xx
+#         if self.s1 == None:
+#             return None
+#         # l = len(self.s1)
+#         res = self.s1[0]
+#         self.s1.remove(res)
+#         return res
+# s1 = Solution2()
+# input = "We Are Happy."
+# print(s1.push(2))
+# print(s1.push(3))
+# print(s1.pop())
+
+
+
+
+
+
+
+
+
+
+
+
