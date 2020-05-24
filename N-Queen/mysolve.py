@@ -1,5 +1,5 @@
 
-
+import collections
 
 result = []
 n = 4
@@ -8,7 +8,11 @@ n = 4
 #na :x-y
 def DFS(queens,pie,na):
     i = len(queens) #行数
+    collections.defaultdict
     if i == n :
+        print("queen:",queens)
+        print("pie:",pie)
+        print("na",na)
         result.append(queens)
         return None
 
