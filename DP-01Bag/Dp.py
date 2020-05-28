@@ -9,7 +9,7 @@ weight["jacket"] = 2
 weight["camera"] = 1
 # 定义价值
 worth = {}
-worth["water"] = 1000
+worth["water"] = 10
 worth["book"] = 3
 worth["food"] = 9
 worth["jacket"] = 5
@@ -26,15 +26,15 @@ table_name[4] = "camera"
 # 创建矩阵,用来保存价值表
 table = np.zeros((len(weight), 6))
 
-# 创建矩阵，用来保存每个单元格中的价值是如何得到的（物品名）
-table_class = np.zeros((len(weight), 6), dtype=np.dtype((np.str_, 500)))
 
-for i in range(0, len(weight)):
-    for j in range(0, 6):
+for i in range(0, len(weight)):   # i 容许的重量
+    for j in range(0, 6):     # j 候选物品
+        this_name = table_name[i]
         # 获取重量
-        this_weight = weight[table_name[i]]
+        this_weight = weight[this_name]
         # 获得价值
-        this_worth = worth[table_name[i]]
+        this_worth = worth[this_name]
+
         # 获取上一个单元格 (i-1,j)的值
         if (i > 0):
             before_worth = table[i - 1, j]
@@ -50,22 +50,13 @@ for i in range(0, len(weight)):
             # 与上一个单元格比较,哪个大写入哪个
             if (synthesize_worth > before_worth):
                 table[i, j] = synthesize_worth
-                if (temp == 0):
-                    # 他自己就超过了
-                    table_class[i][j] = table_name[i]
-                else:
-                    # 他自己和(i-1,j-this_weight)
-                    table_class[i][j] = table_name[i] + "," + table_class[i - 1][j - this_weight]
             else:
                 table[i, j] = before_worth
-                table_class[i][j] = table_class[i - 1][j]
         else:
             # 没有（i-1,j）那更没有(i-1,j-重量),就等于当前商品价值,或者重量不够，是0
             if (this_weight - 1 <= j):
                 table[i, j] = this_worth
-                table_class[i][j] = table_name[i]
 print(table)
 
 print("--------------------------------------")
 
-print(table_class)

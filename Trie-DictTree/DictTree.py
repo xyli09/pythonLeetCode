@@ -6,7 +6,6 @@ endOfWord = "#"
 def insert(words):
     node = root
     for char in words:
-        print(char)
         node = node.setdefault(char,{})
     node[endOfWord] = endOfWord
 
